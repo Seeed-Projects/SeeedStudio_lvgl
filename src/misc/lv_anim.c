@@ -49,6 +49,7 @@ static lv_timer_t * _lv_anim_tmr;
     #define TRACE_ANIM(...)
 #endif
 
+
 /**********************
  *   GLOBAL FUNCTIONS
  **********************/

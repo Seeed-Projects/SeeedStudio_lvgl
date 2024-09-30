@@ -21,6 +21,7 @@ extern "C" {
 #include <stdint.h>
 #include <stddef.h>
 
+
 /*********************
  *      DEFINES
  *********************/
@@ -53,6 +54,7 @@ typedef struct lv_lru_t {
     lv_lru_free_t * key_free;
     lv_lru_item_t * free_items;
 } lv_lru_t;
+
 
 /**********************
  * GLOBAL PROTOTYPES

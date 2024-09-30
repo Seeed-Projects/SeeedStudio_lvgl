@@ -39,6 +39,7 @@
  *   GLOBAL FUNCTIONS
  **********************/
 
+
 struct _lv_draw_layer_ctx_t * lv_draw_sw_layer_create(struct _lv_draw_ctx_t * draw_ctx, lv_draw_layer_ctx_t * layer_ctx,
                                                       lv_draw_layer_flags_t flags)
 {
@@ -142,6 +143,7 @@ void lv_draw_sw_layer_destroy(lv_draw_ctx_t * draw_ctx, lv_draw_layer_ctx_t * la
 
     lv_mem_free(layer_ctx->buf);
 }
+
 
 /**********************
  *   STATIC FUNCTIONS

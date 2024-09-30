@@ -398,6 +398,7 @@ lv_pinyin_dict_t lv_ime_pinyin_def_dict[] = {
 };
 #endif
 
+
 /**********************
  *      MACROS
  **********************/
@@ -412,6 +413,7 @@ lv_obj_t * lv_ime_pinyin_create(lv_obj_t * parent)
     lv_obj_class_init_obj(obj);
     return obj;
 }
+
 
 /*=====================
  * Setter functions
@@ -560,8 +562,6 @@ static void lv_ime_pinyin_constructor(const lv_obj_class_t * class_p, lv_obj_t *
     lv_memset_00(pinyin_ime->py_num, sizeof(pinyin_ime->py_num));
     lv_memset_00(pinyin_ime->py_pos, sizeof(pinyin_ime->py_pos));
 
-    lv_obj_add_flag(obj, LV_OBJ_FLAG_HIDDEN);
-
     lv_obj_set_size(obj, LV_PCT(100), LV_PCT(55));
     lv_obj_align(obj, LV_ALIGN_BOTTOM_MID, 0, 0);
 
@@ -576,7 +576,6 @@ static void lv_ime_pinyin_constructor(const lv_obj_class_t * class_p, lv_obj_t *
     lv_obj_add_flag(pinyin_ime->cand_panel, LV_OBJ_FLAG_HIDDEN);
 
     lv_btnmatrix_set_one_checked(pinyin_ime->cand_panel, true);
-    lv_obj_clear_flag(pinyin_ime->cand_panel, LV_OBJ_FLAG_CLICK_FOCUSABLE);
 
     /* Set cand_panel style*/
     // Default style
@@ -614,6 +613,7 @@ static void lv_ime_pinyin_constructor(const lv_obj_class_t * class_p, lv_obj_t *
 #endif
 }
 
+
 static void lv_ime_pinyin_destructor(const lv_obj_class_t * class_p, lv_obj_t * obj)
 {
     LV_UNUSED(class_p);
@@ -626,6 +626,7 @@ static void lv_ime_pinyin_destructor(const lv_obj_class_t * class_p, lv_obj_t * 
     if(lv_obj_is_valid(pinyin_ime->cand_panel))
         lv_obj_del(pinyin_ime->cand_panel);
 }
+
 
 static void lv_ime_pinyin_kb_event(lv_event_t * e)
 {
@@ -754,6 +755,7 @@ static void lv_ime_pinyin_kb_event(lv_event_t * e)
     }
 }
 
+
 static void lv_ime_pinyin_cand_panel_event(lv_event_t * e)
 {
     lv_event_code_t code = lv_event_get_code(e);
@@ -784,6 +786,7 @@ static void lv_ime_pinyin_cand_panel_event(lv_event_t * e)
         pinyin_ime_clear_data(obj);
     }
 }
+
 
 static void pinyin_input_proc(lv_obj_t * obj)
 {
@@ -850,6 +853,7 @@ static void pinyin_page_proc(lv_obj_t * obj, uint16_t dir)
     }
 }
 
+
 static void lv_ime_pinyin_style_change_event(lv_event_t * e)
 {
     lv_event_code_t code = lv_event_get_code(e);
@@ -862,6 +866,7 @@ static void lv_ime_pinyin_style_change_event(lv_event_t * e)
         lv_obj_set_style_text_font(pinyin_ime->cand_panel, font, 0);
     }
 }
+
 
 static void init_pinyin_dict(lv_obj_t * obj, lv_pinyin_dict_t * dict)
 {
@@ -896,6 +901,7 @@ static void init_pinyin_dict(lv_obj_t * obj, lv_pinyin_dict_t * dict)
         }
     }
 }
+
 
 static char * pinyin_search_matching(lv_obj_t * obj, char * py_str, uint16_t * cand_num)
 {
@@ -938,6 +944,7 @@ static void pinyin_ime_clear_data(lv_obj_t * obj)
 {
     lv_ime_pinyin_t * pinyin_ime = (lv_ime_pinyin_t *)obj;
 
+
 #if LV_IME_PINYIN_USE_K9_MODE
     if(pinyin_ime->mode == LV_IME_PINYIN_MODE_K9) {
         pinyin_ime->k9_input_str_len = 0;
@@ -956,6 +963,7 @@ static void pinyin_ime_clear_data(lv_obj_t * obj)
 
     lv_obj_add_flag(pinyin_ime->cand_panel, LV_OBJ_FLAG_HIDDEN);
 }
+
 
 #if LV_IME_PINYIN_USE_K9_MODE
 static void pinyin_k9_init_data(lv_obj_t * obj)
@@ -1046,6 +1054,7 @@ static void pinyin_k9_get_legal_py(lv_obj_t * obj, char * k9_input, const char *
     }
 }
 
+
 /*true: visible; false: not visible*/
 static bool pinyin_k9_is_valid_py(lv_obj_t * obj, char * py_str)
 {
@@ -1082,6 +1091,7 @@ static bool pinyin_k9_is_valid_py(lv_obj_t * obj, char * py_str)
     }
     return false;
 }
+
 
 static void pinyin_k9_fill_cand(lv_obj_t * obj)
 {
@@ -1120,6 +1130,7 @@ static void pinyin_k9_fill_cand(lv_obj_t * obj)
     pinyin_ime->k9_input_str_len = strlen(pinyin_ime->input_char);
     lv_textarea_add_text(ta, pinyin_ime->input_char);
 }
+
 
 static void pinyin_k9_cand_page_proc(lv_obj_t * obj, uint16_t dir)
 {
@@ -1184,3 +1195,4 @@ static void pinyin_k9_cand_page_proc(lv_obj_t * obj, uint16_t dir)
 #endif  /*LV_IME_PINYIN_USE_K9_MODE*/
 
 #endif  /*LV_USE_IME_PINYIN*/
+

@@ -296,6 +296,7 @@ lv_timer_t * lv_indev_get_read_timer(lv_disp_t * indev)
     return indev->refr_timer;
 }
 
+
 lv_obj_t * lv_indev_search_obj(lv_obj_t * obj, lv_point_t * point)
 {
     lv_obj_t * found_p = NULL;
@@ -355,16 +356,16 @@ static void indev_pointer_proc(lv_indev_t * i, lv_indev_data_t * data)
 
     /*Simple sanity check*/
     if(data->point.x < 0) {
-        LV_LOG_WARN("X is %d which is smaller than zero", (int)data->point.x);
+        LV_LOG_WARN("X is %d which is smaller than zero", data->point.x);
     }
     if(data->point.x >= lv_disp_get_hor_res(i->driver->disp)) {
-        LV_LOG_WARN("X is %d which is greater than hor. res", (int)data->point.x);
+        LV_LOG_WARN("X is %d which is greater than hor. res", data->point.x);
     }
     if(data->point.y < 0) {
-        LV_LOG_WARN("Y is %d which is smaller than zero", (int)data->point.y);
+        LV_LOG_WARN("Y is %d which is smaller than zero", data->point.y);
     }
     if(data->point.y >= lv_disp_get_ver_res(i->driver->disp)) {
-        LV_LOG_WARN("Y is %d which is greater than ver. res", (int)data->point.y);
+        LV_LOG_WARN("Y is %d which is greater than ver. res", data->point.y);
     }
 
     /*Move the cursor if set and moved*/
@@ -983,6 +984,7 @@ static void indev_proc_release(_lv_indev_proc_t * proc)
         proc->types.pointer.act_obj = NULL;
         proc->pr_timestamp          = 0;
         proc->longpr_rep_timestamp  = 0;
+
 
         /*Get the transformed vector with this object*/
         if(scroll_obj) {

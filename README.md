@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-LVGL provides everything you need to create an embedded GUI with easy-to-use graphical elements, beautiful visual effects and a low memory footprint.
+This repository fork is from [lvgl/lvgl](https://github.com/lvgl/lvgl) and has been revised to support Seeed Studio screen products only. The one that has been tested and works well so far is v8.3 under the master branch. Other branches have not been tested yet.
 </p>
 
 <h4 align="center">
@@ -16,7 +16,9 @@ LVGL provides everything you need to create an embedded GUI with easy-to-use gra
 <a href="https://docs.lvgl.io/master/examples.html">Interactive examples</a>
 </h4>
 
+
 **English** | [中文](./README_zh.md) | [Português do Brasil](./README_pt_BR.md)
+
 
 ---
 
@@ -115,6 +117,9 @@ LVGL is also available as:
 
 
 ## Get started
+
+**Before using this repository, please move `lv_conf.h` under the repository to the `libraries` directory of Arduino.**
+
 This list shows the recommended way of learning the library:
 1. Check the [Online demos](https://lvgl.io/demos) to see LVGL in action (3 minutes)
 2. Read the [Introduction](https://docs.lvgl.io/master/intro/index.html) page of the documentation (5 minutes)

@@ -43,6 +43,7 @@ typedef struct {
 #endif
 } my_theme_styles_t;
 
+
 /**********************
  *  STATIC PROTOTYPES
  **********************/
@@ -75,6 +76,7 @@ static void style_init(void)
     lv_style_set_bg_opa(&styles->scr, LV_OPA_COVER);
     lv_style_set_bg_color(&styles->scr, COLOR_SCR);
     lv_style_set_text_color(&styles->scr, COLOR_DIM);
+
 
     style_init_reset(&styles->transp);
     lv_style_set_bg_opa(&styles->transp, LV_OPA_TRANSP);
@@ -128,6 +130,7 @@ static void style_init(void)
 #endif
 }
 
+
 /**********************
  *   GLOBAL FUNCTIONS
  **********************/
@@ -165,6 +168,7 @@ lv_theme_t * lv_theme_basic_init(lv_disp_t * disp)
 
     return (lv_theme_t *)&theme;
 }
+
 
 static void theme_apply(lv_theme_t * th, lv_obj_t * obj)
 {

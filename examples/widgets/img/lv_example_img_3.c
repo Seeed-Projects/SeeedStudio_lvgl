@@ -11,6 +11,7 @@ static void set_zoom(void * img, int32_t v)
     lv_img_set_zoom(img, v);
 }
 
+
 /**
  * Show transformations (zoom and rotation) using a pivot point.
  */

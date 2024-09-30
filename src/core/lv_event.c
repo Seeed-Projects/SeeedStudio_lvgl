@@ -20,7 +20,7 @@
 typedef struct _lv_event_dsc_t {
     lv_event_cb_t cb;
     void * user_data;
-    uint8_t filter;
+    lv_event_code_t filter : 8;
 } lv_event_dsc_t;
 
 /**********************
@@ -29,6 +29,7 @@ typedef struct _lv_event_dsc_t {
 static lv_event_dsc_t * lv_obj_get_event_dsc(const lv_obj_t * obj, uint32_t id);
 static lv_res_t event_send_core(lv_event_t * e);
 static bool event_is_bubbled(lv_event_t * e);
+
 
 /**********************
  *  STATIC VARIABLES
@@ -79,6 +80,7 @@ lv_res_t lv_event_send(lv_obj_t * obj, lv_event_code_t event_code, void * param)
     return res;
 }
 
+
 lv_res_t lv_obj_event_base(const lv_obj_class_t * class_p, lv_event_t * e)
 {
     const lv_obj_class_t * base;
@@ -101,6 +103,7 @@ lv_res_t lv_obj_event_base(const lv_obj_class_t * class_p, lv_event_t * e)
 
     return res;
 }
+
 
 lv_obj_t * lv_event_get_target(lv_event_t * e)
 {
@@ -137,6 +140,7 @@ void lv_event_stop_processing(lv_event_t * e)
     e->stop_processing = 1;
 }
 
+
 uint32_t lv_event_register_id(void)
 {
     static uint32_t last_id = _LV_EVENT_LAST;
@@ -153,6 +157,7 @@ void _lv_event_mark_deleted(lv_obj_t * obj)
         e = e->prev;
     }
 }
+
 
 struct _lv_event_dsc_t * lv_obj_add_event_cb(lv_obj_t * obj, lv_event_cb_t event_cb, lv_event_code_t filter,
                                              void * user_data)
@@ -220,6 +225,7 @@ bool lv_obj_remove_event_cb_with_user_data(lv_obj_t * obj, lv_event_cb_t event_c
     /*No event handler found*/
     return false;
 }
+
 
 bool lv_obj_remove_event_dsc(lv_obj_t * obj, struct _lv_event_dsc_t * event_dsc)
 {

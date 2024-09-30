@@ -3,6 +3,7 @@
 
 static lv_obj_t * spinbox;
 
+
 static void lv_spinbox_increment_event_cb(lv_event_t * e)
 {
     lv_event_code_t code = lv_event_get_code(e);
@@ -18,6 +19,7 @@ static void lv_spinbox_decrement_event_cb(lv_event_t * e)
         lv_spinbox_decrement(spinbox);
     }
 }
+
 
 void lv_example_spinbox_1(void)
 {
